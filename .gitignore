@@ -1,3 +1,7 @@
+#java
+javacore/example/target/*
+
+
 # Prerequisites
 *.d
 
