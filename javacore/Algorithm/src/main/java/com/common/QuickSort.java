@@ -26,10 +26,19 @@ public class QuickSort {
 
     public static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
-            int pi = partition(arr, low, high);
+            int par = partition(arr, low, high);
             // recusive
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+            quickSort(arr, low, par - 1);
+            quickSort(arr, par + 1, high);
+        }
+    }
+
+    public static void main(String[] args){
+        int a[] = {12, 23, 4, 5, 7,2, 1, 12, 9, 10, 43, 12, 32, 14};
+        quickSort(a, 0, 13);
+
+        for(int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
         }
     }
 }
