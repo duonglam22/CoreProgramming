@@ -1,0 +1,24 @@
+package com.leetcode;
+import java.util.*;
+
+class Isomorphic {
+    public boolean isIsomorphic(String s, String t) {
+        return isIsomorphicFunc(s, t) && isIsomorphicFunc(t, s);
+    }
+
+    public static boolean isIsomorphicFunc(String s, String t) {
+        Map<Character, Character> myMap = new HashMap<>();
+        int size = s.length();
+        if (size != t.length())
+            return false;
+        for (int i = 0; i < size; i++) {
+            if (myMap.containsKey(s.charAt(i))) {
+                if (myMap.get(s.charAt(i)) != t.charAt(i))
+                    return false;
+            } else {
+                myMap.put(s.charAt(i), t.charAt(i));
+            }
+        }
+        return true;
+    }
+}
