@@ -1,0 +1,32 @@
+package com.leetcode;
+import java.util.*;
+
+class LengthOfLongestSubarray {
+    public int maxSubarrayLength(int[] nums, int k) {
+        Map<Integer, Integer> numMap = new HashMap<>();
+        int size = nums.length;
+        int idx = 0;
+        int counter = 0;
+        for (int i = 0; i < size; i++) {
+            int num = nums[i];
+            int freq = numMap.getOrDefault(num, 0);
+            if (freq < k) {
+                counter = Math.max(counter, i - idx + 1);
+                numMap.put(num, freq + 1);
+            } else {
+                for (int j = idx; j < i; j++) {
+                    if (num == nums[j]) {
+                        idx = j+1;
+                        break;
+                    }
+                    int tmpNum = nums[j];
+                    int tmpVal = numMap.getOrDefault(tmpNum, 0);
+                    numMap.put(tmpNum, tmpVal > 0 ? tmpVal - 1 : 0);
+
+                }
+            }
+        }
+        return counter;
+        
+    }
+}
